@@ -2819,7 +2819,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7609149507174173641, guid: d26dc1241d332c342b898a57f1164932,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7609149507174173641, guid: d26dc1241d332c342b898a57f1164932, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d26dc1241d332c342b898a57f1164932, type: 3}
 --- !u!4 &564068791 stripped
 Transform:
@@ -3015,6 +3021,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7609149507174173641, guid: d26dc1241d332c342b898a57f1164932,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d26dc1241d332c342b898a57f1164932, type: 3}
 --- !u!4 &620795092 stripped
@@ -3119,6 +3130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609149507174173641, guid: d26dc1241d332c342b898a57f1164932,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d26dc1241d332c342b898a57f1164932, type: 3}
@@ -6367,6 +6383,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7609149507174173641, guid: d26dc1241d332c342b898a57f1164932,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d26dc1241d332c342b898a57f1164932, type: 3}
 --- !u!4 &1428304541 stripped
@@ -7382,6 +7403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704782936}
   - component: {fileID: 1704782935}
+  - component: {fileID: 1704782937}
   m_Layer: 0
   m_Name: Selection Manager
   m_TagString: Untagged
@@ -7418,6 +7440,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1704782937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704782934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a898d9cedab13924bb2da55e1f64299d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 691408630}
+  crosshairBlue: {fileID: 0}
+  crosshairBlanc: {fileID: 1216467585}
 --- !u!1 &1731500372
 GameObject:
   m_ObjectHideFlags: 0
