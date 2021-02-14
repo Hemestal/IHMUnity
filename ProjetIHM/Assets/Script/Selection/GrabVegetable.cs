@@ -6,7 +6,6 @@ public class GrabVegetable : MonoBehaviour
 {
     private Transform _selection;
     public GameObject player;
-    public GameObject crosshairBlue, crosshairBlanc;
 
     void Start()
     {
