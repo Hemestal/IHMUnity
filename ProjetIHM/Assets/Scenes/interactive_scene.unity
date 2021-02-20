@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 39559115}
   - component: {fileID: 39559117}
   - component: {fileID: 39559116}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: NbTomatoSeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,16 +404,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39559114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 390194632}
-  m_RootOrder: 1
+  m_Father: {fileID: 670834640}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.4, y: 24}
+  m_AnchoredPosition: {x: 21.800024, y: 25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &39559116
@@ -4166,6 +4166,7 @@ GameObject:
   - component: {fileID: 570756017}
   - component: {fileID: 570756016}
   - component: {fileID: 570756015}
+  - component: {fileID: 570756019}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4253,6 +4254,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &570756019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570756014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40af9c347b42cd7448fb9e73817e03fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TomatoSeedNumber: {fileID: 39559116}
+  CabbageSeedNumber: {fileID: 2106536942}
+  TomatoCounter: 0
+  CabbageCounter: 0
+  time: 0
 --- !u!1001 &573973814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5014,6 +5032,8 @@ RectTransform:
   - {fileID: 1590000631572747099}
   - {fileID: 390194632}
   - {fileID: 1699787378}
+  - {fileID: 39559115}
+  - {fileID: 2106536941}
   m_Father: {fileID: 1008980270}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14114,16 +14134,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106536940}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1699787378}
-  m_RootOrder: 1
+  m_Father: {fileID: 670834640}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.8, y: 23.5}
+  m_AnchoredPosition: {x: 114.199905, y: 24.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106536942
