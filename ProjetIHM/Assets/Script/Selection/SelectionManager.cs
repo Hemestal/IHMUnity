@@ -52,7 +52,7 @@ public class SelectionManager : MonoBehaviour
                         else if(selection.CompareTag("Cabbage")) //tomate à récolter
                         {
                             CabbageCounter++;
-                            GameObject box = GameObject.Find("Box_01");
+                            GameObject box = GameObject.Find("Box_02");
                             selection.gameObject.transform.SetParent(GameObject.Find("Box_02").transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedCabbage" + CabbageCounter;
