@@ -6,9 +6,9 @@ using TMPro;
 public class SelectionManager : MonoBehaviour
 {
     private Transform _selection;
-    public GameObject tomato,cabage;
+    public GameObject tomato,cabbage, TomatoPlant, CabbagePlant;
     public TextMeshPro TomatoText, CabbageText;
-    public int TomatoCounter, CabbageCounter;
+    public static int TomatoCounter, CabbageCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,25 +39,27 @@ public class SelectionManager : MonoBehaviour
                     selectionRenderer.material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
                     if (Input.GetKeyDown("e"))
                     {
-                        if (selection.CompareTag("Tomato"))
+                        if (selection.CompareTag("Tomato")) //tomate à récolter
                         {
-                            if (Input.GetKeyDown("e"))
-                            {
-                                TomatoCounter++;
-                                selection.gameObject.transform.position = new Vector3(-10.0f, 1f, 1.0f);
-                                TomatoText.transform.GetComponent<TextMeshPro>().text =  TomatoCounter + "\nTomatoes";
-                            }
+                            TomatoCounter++;
+                            GameObject box = GameObject.Find("Box_01");
+                            selection.gameObject.transform.SetParent(box.transform);
+                            selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
+                            selection.gameObject.name = "HarvestedTomato" + TomatoCounter;
+                            TomatoText.transform.GetComponent<TextMeshPro>().text =  TomatoCounter + "\nTomatoes";
                         }
-                        else if(selection.CompareTag("Cabbage"))
+
+                        else if(selection.CompareTag("Cabbage")) //tomate à récolter
                         {
-                            if (Input.GetKeyDown("e"))
-                            {
-                                CabbageCounter++;
-                                selection.gameObject.transform.position = new Vector3(10.0f, 1f, 1.0f);
-                                CabbageText.transform.GetComponent<TextMeshPro>().text = CabbageCounter + "\nCabbages";
-                            }
+                            CabbageCounter++;
+                            GameObject box = GameObject.Find("Box_01");
+                            selection.gameObject.transform.SetParent(GameObject.Find("Box_02").transform);
+                            selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
+                            selection.gameObject.name = "HarvestedCabbage" + CabbageCounter;
+                            CabbageText.transform.GetComponent<TextMeshPro>().text = CabbageCounter + "\nCabbages";
                         }
-                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoPlant")
+
+                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoPlant") //Recolte plant de tomate
                         {
                             Destroy(selectionRenderer.gameObject);
                             GameObject fruit1 = Instantiate(tomato) as GameObject;
@@ -66,12 +68,57 @@ public class SelectionManager : MonoBehaviour
                             fruit2.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f, 0.4f), 1.5f, 0f);
                             GameObject fruit3 = Instantiate(tomato) as GameObject;
                             fruit3.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f, 0.4f), 2f, 0f);
+
+                            //find shoot corresponding to the tomatoPlant
+                            string text = selection.gameObject.name;
+                            text = text.Substring(12, 2);
+                            GameObject shoot = GameObject.Find("TomatoShoot").transform.Find("shoot" + text).gameObject;
+                            shoot.tag = "Selectable";
                         }
-                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "Cabbages")
+
+                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "Cabbages") //Recolte choux
                         {
                             Destroy(selectionRenderer.gameObject);
-                            GameObject fruit1 = Instantiate(cabage) as GameObject;
+                            GameObject fruit1 = Instantiate(cabbage) as GameObject;
                             fruit1.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f,0.4f), 1f, 0f);
+
+                            //find shoot corresponding to the tomatoPlant
+                            string text = selection.gameObject.name;
+                            text = text.Substring(8, 2);
+                            GameObject shoot = GameObject.Find("CabbageShoot").transform.Find("shoot" + text).gameObject;
+                            shoot.tag = "Selectable";
+                        }
+
+                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "CabbageShoot" && InventoryUI.CabbageCounter > 0) //Seme choux
+                        {
+                            GameObject Plant = Instantiate(CabbagePlant) as GameObject;
+                            Plant.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                            Plant.transform.SetParent(GameObject.Find("Cabbages").transform);
+                            Plant.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(0f, 0.05f, 0f);
+
+                            //Rename Tomato(clone)
+                            string text = selection.gameObject.name;
+                            text = text.Substring(5, 2);
+                            Plant.gameObject.name = "Cabbage_" + text;
+                            Plant.gameObject.AddComponent<GrowthManager>();
+
+                            selection.gameObject.tag = "Untagged";
+                        }
+
+                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoShoot" && InventoryUI.TomatoCounter > 0) //Seme plant de tomate
+                        {
+                            GameObject Plant = Instantiate(TomatoPlant) as GameObject;
+                            Plant.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                            Plant.transform.SetParent(GameObject.Find("TomatoPlant").transform);
+                            Plant.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(0f, 0.05f, 0f);
+
+                            //Rename Tomato(clone)
+                            string text = selection.gameObject.name;
+                            text = text.Substring(5, 2);
+                            Plant.gameObject.name = "TomatoPlant_" + text;
+                            Plant.gameObject.AddComponent<GrowthManager>();
+
+                            selection.gameObject.tag = "Untagged";
                         }
                     }
                 }

@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI TomatoSeedNumber, CabbageSeedNumber;
-    public int TomatoCounter, CabbageCounter;
+    public GameObject image;
+    public static int TomatoCounter, CabbageCounter;
     public float time;
 
     void Start()
     {
         TomatoCounter = CabbageCounter = 0;
         time = 0.0f;
+        image.GetComponent<Image>().color = new Color(100.0f, 60.0f, 60.0f);
     }
 
 
