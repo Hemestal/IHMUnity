@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrowthManager : MonoBehaviour
 {
-    private float time;
+    public float time;
 
     void Start()
     {
@@ -15,15 +15,14 @@ public class GrowthManager : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(Time.deltaTime > 1)
+        if(time > 5.0f)
         {
-            Debug.Log("salut ca marche");
             time = 0;
-            if (transform.name.StartsWith("Cabbage") && transform.localScale.x < 1)
+            if (transform.name.StartsWith("Cabbage") && transform.localScale.x < 1.0f)
             {
                 transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
             }
-            else if(transform.name.StartsWith("Tomato") && transform.localScale.x < 1)
+            else if(transform.name.StartsWith("Tomato") && transform.localScale.x < 2.0f)
             {
                 transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
             }
