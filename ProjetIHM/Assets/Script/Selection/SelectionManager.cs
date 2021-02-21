@@ -53,7 +53,7 @@ public class SelectionManager : MonoBehaviour
                         {
                             CabbageCounter++;
                             GameObject box = GameObject.Find("Box_02");
-                            selection.gameObject.transform.SetParent(GameObject.Find("Box_02").transform);
+                            selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedCabbage" + CabbageCounter;
                             CabbageText.transform.GetComponent<TextMeshPro>().text = CabbageCounter + "\nCabbages";
