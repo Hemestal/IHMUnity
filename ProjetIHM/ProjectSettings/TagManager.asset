@@ -10,8 +10,6 @@ TagManager:
   - Door
   - BuyTomato
   - BuyCabage
-  - SellCabbage
-  - SellTomato
   layers:
   - Default
   - TransparentFX

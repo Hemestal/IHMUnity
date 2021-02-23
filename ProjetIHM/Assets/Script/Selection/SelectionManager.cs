@@ -36,8 +36,7 @@ public class SelectionManager : MonoBehaviour
                 var selectionRenderer = selection.GetComponent<Renderer>();
                 if (selectionRenderer != null)
                 {
-                    //selectionRenderer.material.shader = Shader.Find("Self-Illumin/Outlined diffuse");
-                    selectionRenderer.material.shader = Shader.Find("Ultimate 10+ Shaders/Force Field");
+                    selectionRenderer.material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
                     if (Input.GetKeyDown("e"))
                     {
                         if (selection.CompareTag("Tomato")) //tomate à récolter
