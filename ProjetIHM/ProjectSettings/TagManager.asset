@@ -8,6 +8,8 @@ TagManager:
   - Tomato
   - Cabbage
   - Door
+  - BuyTomato
+  - BuyCabage
   layers:
   - Default
   - TransparentFX
