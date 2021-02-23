@@ -24,21 +24,6 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
-        /*
-        time += Time.deltaTime;
-        if (time > 2)
-        {
-            TomatoSeedCounter++;
-            time++;
-            TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
-
-            if (time > 4)
-            {
-                CabbageSeedCounter++;
-                CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
-                time = 0.0f;
-            }
-        }*/
         TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
         CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
         CoinsNumber.transform.GetComponent<TextMeshProUGUI>().text = Coins.ToString()+" Coins";
