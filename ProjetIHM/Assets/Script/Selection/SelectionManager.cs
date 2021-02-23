@@ -122,13 +122,15 @@ public class SelectionManager : MonoBehaviour
 
                             selection.gameObject.tag = "Untagged";
                         }
-                        else if (selection.CompareTag("BuyTomato")) //graine de tomate a acheter
+                        else if (selection.CompareTag("BuyTomato") && InventoryUI.Coins >= 1) //graine de tomate a acheter
                         {
                             InventoryUI.TomatoSeedCounter++;
+                            InventoryUI.Coins--;
                         }
-                        else if (selection.CompareTag("BuyCabage")) //graine de tomate a acheter
+                        else if (selection.CompareTag("BuyCabage") && InventoryUI.Coins >= 2) //graine de tomate a acheter
                         {
                             InventoryUI.CabbageSeedCounter++;
+                            InventoryUI.Coins -= 2;
                         }
                     }
                     _selection = selection;

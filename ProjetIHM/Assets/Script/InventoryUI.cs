@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI TomatoSeedNumber, CabbageSeedNumber;
+    public TextMeshProUGUI CoinsNumber;
     public GameObject image;
     public static int TomatoSeedCounter, CabbageSeedCounter;
     public static int Coins;
@@ -15,6 +16,7 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         TomatoSeedCounter = CabbageSeedCounter = 0;
+        Coins = 10;
         time = 0.0f;
         image.GetComponent<Image>().color = new Color(100.0f, 60.0f, 60.0f);
     }
@@ -39,17 +41,6 @@ public class InventoryUI : MonoBehaviour
         }*/
         TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
         CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
-    }
-    public void addSeedTomato()
-    {
-        TomatoSeedCounter++;
-        time++;
-        TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
-    }
-    public void addSeedCabbage()
-    {
-        CabbageSeedCounter++;
-        CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
-        time = 0.0f;
+        CoinsNumber.transform.GetComponent<TextMeshProUGUI>().text = Coins.ToString()+" Coins";
     }
 }
