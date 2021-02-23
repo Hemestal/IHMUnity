@@ -15,12 +15,12 @@ public class GrowthManager : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time > 2.0f)
+        if(time > 3.0f)
         {
             time = 0;
             if (transform.name.StartsWith("Cabbage") && transform.localScale.x < 1.0f)
             {
-                transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+                transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
                 Debug.Log("wow : " + transform.localScale.x);
                 if(transform.localScale.x >= 1.0f)
                 {
