@@ -8,7 +8,6 @@ public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI TomatoSeedNumber, CabbageSeedNumber;
     public TextMeshProUGUI CoinsNumber;
-    public GameObject image;
     public static int TomatoSeedCounter, CabbageSeedCounter;
     public static int Coins;
     public float time;
@@ -18,7 +17,6 @@ public class InventoryUI : MonoBehaviour
         TomatoSeedCounter = CabbageSeedCounter = 0;
         Coins = 10;
         time = 0.0f;
-        image.GetComponent<Image>().color = new Color(100.0f, 60.0f, 60.0f);
     }
 
 

@@ -6,12 +6,16 @@ using TMPro;
 public class SelectionManager : MonoBehaviour
 {
     private Transform _selection;
-    public GameObject tomato,cabbage, TomatoPlant, CabbagePlant;
+    public GameObject tomato,cabbage, TomatoPlant, CabbagePlant, Box1, Box2;
     public TextMeshPro TomatoText, CabbageText;
+    private MoveCube moveBox1;
+    private MoveCube moveBox2;
     public static int TomatoCounter, CabbageCounter;
     // Start is called before the first frame update
     void Start()
     {
+        moveBox1 = new MoveCube();
+        moveBox2 = new MoveCube();
         TomatoCounter = CabbageCounter = 0;
     }
 
@@ -47,6 +51,7 @@ public class SelectionManager : MonoBehaviour
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedTomato" + TomatoCounter;
+                            selection.gameObject.tag = "Untagged";
                             TomatoText.transform.GetComponent<TextMeshPro>().text = TomatoCounter + "\nTomatoes";
                         }
 
@@ -57,6 +62,7 @@ public class SelectionManager : MonoBehaviour
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedCabbage" + CabbageCounter;
+                            selection.gameObject.tag = "Untagged";
                             CabbageText.transform.GetComponent<TextMeshPro>().text = CabbageCounter + "\nCabbages";
                         }
 
@@ -123,15 +129,27 @@ public class SelectionManager : MonoBehaviour
 
                             selection.gameObject.tag = "Untagged";
                         }
+
                         else if (selection.CompareTag("BuyTomato") && InventoryUI.Coins >= 1) //graine de tomate a acheter
                         {
                             InventoryUI.TomatoSeedCounter++;
                             InventoryUI.Coins--;
                         }
+
                         else if (selection.CompareTag("BuyCabage") && InventoryUI.Coins >= 2) //graine de tomate a acheter
                         {
                             InventoryUI.CabbageSeedCounter++;
                             InventoryUI.Coins -= 2;
+                        }
+
+                        else if (selection.CompareTag("Selectable") && selection.gameObject.layer.Equals("Box1"))
+                        {
+                            moveBox1.PushCube(Box1);
+                        }
+
+                        else if (selection.CompareTag("Selectable") && selection.gameObject.layer.Equals("Box2"))
+                        {
+                            moveBox2.PushCube(Box2);
                         }
                     }
                     _selection = selection;
