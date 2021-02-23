@@ -8,12 +8,13 @@ public class InventoryUI : MonoBehaviour
 {
     public TextMeshProUGUI TomatoSeedNumber, CabbageSeedNumber;
     public GameObject image;
-    public static int TomatoCounter, CabbageCounter;
+    public static int TomatoSeedCounter, CabbageSeedCounter;
+    public static int Coins;
     public float time;
 
     void Start()
     {
-        TomatoCounter = CabbageCounter = 0;
+        TomatoSeedCounter = CabbageSeedCounter = 0;
         time = 0.0f;
         image.GetComponent<Image>().color = new Color(100.0f, 60.0f, 60.0f);
     }
@@ -21,19 +22,34 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
+        /*
         time += Time.deltaTime;
         if (time > 2)
         {
-            TomatoCounter++;
+            TomatoSeedCounter++;
             time++;
-            TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoCounter.ToString();
+            TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
 
             if (time > 4)
             {
-                CabbageCounter++;
-                CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageCounter.ToString();
+                CabbageSeedCounter++;
+                CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
                 time = 0.0f;
             }
-        }
+        }*/
+        TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
+        CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
+    }
+    public void addSeedTomato()
+    {
+        TomatoSeedCounter++;
+        time++;
+        TomatoSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = TomatoSeedCounter.ToString();
+    }
+    public void addSeedCabbage()
+    {
+        CabbageSeedCounter++;
+        CabbageSeedNumber.transform.GetComponent<TextMeshProUGUI>().text = CabbageSeedCounter.ToString();
+        time = 0.0f;
     }
 }

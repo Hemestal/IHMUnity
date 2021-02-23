@@ -31,7 +31,7 @@ public class SelectionManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             var selection = hit.transform;
-            if (selection.CompareTag("Selectable") || selection.CompareTag("Tomato") || selection.CompareTag("Cabbage"))
+            if (selection.CompareTag("Selectable") || selection.CompareTag("Tomato") || selection.CompareTag("Cabbage") || selection.CompareTag("BuyTomato") || selection.CompareTag("BuyCabage"))
             {
                 var selectionRenderer = selection.GetComponent<Renderer>();
                 if (selectionRenderer != null)
@@ -46,10 +46,10 @@ public class SelectionManager : MonoBehaviour
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedTomato" + TomatoCounter;
-                            TomatoText.transform.GetComponent<TextMeshPro>().text =  TomatoCounter + "\nTomatoes";
+                            TomatoText.transform.GetComponent<TextMeshPro>().text = TomatoCounter + "\nTomatoes";
                         }
 
-                        else if(selection.CompareTag("Cabbage")) //tomate à récolter
+                        else if (selection.CompareTag("Cabbage")) //tomate à récolter
                         {
                             CabbageCounter++;
                             GameObject box = GameObject.Find("Box_02");
@@ -80,7 +80,7 @@ public class SelectionManager : MonoBehaviour
                         {
                             Destroy(selectionRenderer.gameObject);
                             GameObject fruit1 = Instantiate(cabbage) as GameObject;
-                            fruit1.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f,0.4f), 1f, 0f);
+                            fruit1.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f, 0.4f), 1f, 0f);
 
                             //find shoot corresponding to the tomatoPlant
                             string text = selection.gameObject.name;
@@ -89,8 +89,9 @@ public class SelectionManager : MonoBehaviour
                             shoot.tag = "Selectable";
                         }
 
-                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "CabbageShoot" && InventoryUI.CabbageCounter > 0) //Seme choux
+                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "CabbageShoot" && InventoryUI.CabbageSeedCounter > 0) //Seme choux
                         {
+                            InventoryUI.CabbageSeedCounter--;
                             GameObject Plant = Instantiate(CabbagePlant) as GameObject;
                             Plant.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                             Plant.transform.SetParent(GameObject.Find("Cabbages").transform);
@@ -105,8 +106,9 @@ public class SelectionManager : MonoBehaviour
                             selection.gameObject.tag = "Untagged";
                         }
 
-                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoShoot" && InventoryUI.TomatoCounter > 0) //Seme plant de tomate
+                        else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoShoot" && InventoryUI.TomatoSeedCounter > 0) //Seme plant de tomate
                         {
+                            InventoryUI.TomatoSeedCounter--;
                             GameObject Plant = Instantiate(TomatoPlant) as GameObject;
                             Plant.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
                             Plant.transform.SetParent(GameObject.Find("TomatoPlant").transform);
@@ -120,9 +122,17 @@ public class SelectionManager : MonoBehaviour
 
                             selection.gameObject.tag = "Untagged";
                         }
+                        else if (selection.CompareTag("BuyTomato")) //graine de tomate a acheter
+                        {
+                            InventoryUI.TomatoSeedCounter++;
+                        }
+                        else if (selection.CompareTag("BuyCabage")) //graine de tomate a acheter
+                        {
+                            InventoryUI.CabbageSeedCounter++;
+                        }
                     }
+                    _selection = selection;
                 }
-                _selection = selection;
             }
         }
     }
