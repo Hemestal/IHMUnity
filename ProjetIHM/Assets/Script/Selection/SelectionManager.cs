@@ -34,7 +34,7 @@ public class SelectionManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             var selection = hit.transform;
-            if (selection.CompareTag("Selectable") || selection.CompareTag("Tomato") || selection.CompareTag("Cabbage") || selection.CompareTag("BuyTomato") || selection.CompareTag("BuyCabage"))
+            if (selection.CompareTag("Selectable") || selection.CompareTag("Tomato") || selection.CompareTag("Cabbage") || selection.CompareTag("BuyTomato") || selection.CompareTag("BuyCabage") || selection.CompareTag("Sell"))
             {
                 var selectionRenderer = selection.GetComponent<Renderer>();
                 if (selectionRenderer != null)
@@ -52,7 +52,7 @@ public class SelectionManager : MonoBehaviour
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedTomato" + TomatoCounter;
-                            selection.gameObject.tag = "Untagged";
+                            selection.gameObject.tag = "HarvestedTomato";
                             TomatoText.transform.GetComponent<TextMeshPro>().text = TomatoCounter + "\nTomatoes";
                         }
 
@@ -65,7 +65,7 @@ public class SelectionManager : MonoBehaviour
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedCabbage" + CabbageCounter;
-                            selection.gameObject.tag = "Untagged";
+                            selection.gameObject.tag = "HarvestedCabbage";
                             CabbageText.transform.GetComponent<TextMeshPro>().text = CabbageCounter + "\nCabbages";
                         }
 
@@ -162,6 +162,7 @@ public class SelectionManager : MonoBehaviour
                                 RigidBox.isKinematic = true;
                                 selectionRenderer.gameObject.transform.SetParent(Cam.transform);
                                 selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);
+                                selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                                 pushF = false;
                                 pushT = true;
                             }
@@ -169,6 +170,7 @@ public class SelectionManager : MonoBehaviour
                             else if (pushT)
                             {
                                 selectionRenderer.gameObject.transform.SetParent(Box.transform);
+                                selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                                 RigidBox.isKinematic = false;
                                 pushF = true;
                                 pushT = false;
@@ -184,6 +186,7 @@ public class SelectionManager : MonoBehaviour
                                 RigidBox.isKinematic = true;
                                 selectionRenderer.gameObject.transform.SetParent(Cam.transform);
                                 selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);
+                                selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                                 pushF = false;
                                 pushT = true;
                             }
@@ -191,9 +194,35 @@ public class SelectionManager : MonoBehaviour
                             else if (pushT)
                             {
                                 selectionRenderer.gameObject.transform.SetParent(Box.transform);
+                                selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                                 RigidBox.isKinematic = false;
                                 pushF = true;
                                 pushT = false;
+                            }
+                        }
+                        else if (selection.CompareTag("Sell")) //graine de tomate a acheter
+                        {
+                            if (SellFruit.SellTomato == true)
+                            {
+                                var NbTomato = GameObject.FindGameObjectsWithTag("HarvestedTomato");
+                                InventoryUI.Coins += NbTomato.Length;
+                                foreach (GameObject tomato in NbTomato)
+                                {
+                                    GameObject.Destroy(tomato);
+                                }
+                                TomatoText.transform.GetComponent<TextMeshPro>().text = "0\nTomatoes";
+                                TomatoCounter = 0;
+                            }
+                            if (SellFruit.SellCabbage == true)
+                            {
+                                var NbCabbage = GameObject.FindGameObjectsWithTag("HarvestedCabbage");
+                                InventoryUI.Coins += NbCabbage.Length * 3;
+                                foreach (GameObject cabbage in NbCabbage)
+                                {
+                                    GameObject.Destroy(cabbage);
+                                }
+                                CabbageText.transform.GetComponent<TextMeshPro>().text = "0\nCabbages";
+                                CabbageCounter = 0;
                             }
                         }
                     }
