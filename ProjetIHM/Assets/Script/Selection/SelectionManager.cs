@@ -11,6 +11,8 @@ public class SelectionManager : MonoBehaviour
     private MoveCube moveBox1;
     private MoveCube moveBox2;
     public static int TomatoCounter, CabbageCounter;
+    private bool pushT = false, pushF = true;
+    public GameObject Cam,Box;
     // Start is called before the first frame update
     void Start()
     {
@@ -150,6 +152,46 @@ public class SelectionManager : MonoBehaviour
                         else if (selection.CompareTag("Selectable") && selection.gameObject.layer.Equals("Box2"))
                         {
                             moveBox2.PushCube(Box2);
+                        }
+                        else if(selectionRenderer.gameObject.transform.gameObject.name== "Box_01")
+                        {
+                            Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
+                            if (pushF)
+                            {
+                                RigidBox.isKinematic = true;
+                                selectionRenderer.gameObject.transform.SetParent(Cam.transform);
+                                selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);
+                                pushF = false;
+                                pushT = true;
+                            }
+
+                            else if (pushT)
+                            {
+                                selectionRenderer.gameObject.transform.SetParent(Box.transform);
+                                RigidBox.isKinematic = false;
+                                pushF = true;
+                                pushT = false;
+                            }
+                        }
+                        else if (selectionRenderer.gameObject.transform.gameObject.name == "Box_02")
+                        {
+                            Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
+                            if (pushF)
+                            {
+                                RigidBox.isKinematic = true;
+                                selectionRenderer.gameObject.transform.SetParent(Cam.transform);
+                                selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);
+                                pushF = false;
+                                pushT = true;
+                            }
+
+                            else if (pushT)
+                            {
+                                selectionRenderer.gameObject.transform.SetParent(Box.transform);
+                                RigidBox.isKinematic = false;
+                                pushF = true;
+                                pushT = false;
+                            }
                         }
                     }
                     _selection = selection;

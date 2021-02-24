@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MoveCube : MonoBehaviour
+public class MoveCube : MonoBehaviour, IPointerClickHandler
 {
     public GameObject player;
     public GameObject Cam;
@@ -27,5 +28,9 @@ public class MoveCube : MonoBehaviour
             pushF = true;
             pushT = false;
         }
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Test1");
     }
 }
