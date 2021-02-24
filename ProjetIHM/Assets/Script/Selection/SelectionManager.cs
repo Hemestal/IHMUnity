@@ -11,6 +11,7 @@ public class SelectionManager : MonoBehaviour
     public static int TomatoCounter, CabbageCounter;
     private bool pushT = false, pushF = true;
     public GameObject Cam,Box;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +45,10 @@ public class SelectionManager : MonoBehaviour
                     {
                         if (selection.CompareTag("Tomato")) //tomate à récolter
                         {
+                            FindObjectOfType<SoundManager>().Play("Recup");
                             TomatoCounter++;
                             GameObject box = GameObject.Find("Box_01");
+                            
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedTomato" + TomatoCounter;
@@ -53,10 +56,12 @@ public class SelectionManager : MonoBehaviour
                             TomatoText.transform.GetComponent<TextMeshPro>().text = TomatoCounter + "\nTomatoes";
                         }
 
-                        else if (selection.CompareTag("Cabbage")) //tomate à récolter
+                        else if (selection.CompareTag("Cabbage")) //Cabbage à récolter
                         {
+                            FindObjectOfType<SoundManager>().Play("Recup");
                             CabbageCounter++;
                             GameObject box = GameObject.Find("Box_02");
+
                             selection.gameObject.transform.SetParent(box.transform);
                             selection.gameObject.transform.position = box.transform.position + new Vector3(0.0f, 1f, 0.0f);
                             selection.gameObject.name = "HarvestedCabbage" + CabbageCounter;
@@ -66,7 +71,9 @@ public class SelectionManager : MonoBehaviour
 
                         else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoPlant") //Recolte plant de tomate
                         {
+                            FindObjectOfType<SoundManager>().Play("TomatoRecolte");
                             Destroy(selectionRenderer.gameObject);
+                            
                             GameObject fruit1 = Instantiate(tomato) as GameObject;
                             fruit1.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f, 0.4f), 1f, 0f);
                             GameObject fruit2 = Instantiate(tomato) as GameObject;
@@ -83,7 +90,9 @@ public class SelectionManager : MonoBehaviour
 
                         else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "Cabbages") //Recolte choux
                         {
+                            FindObjectOfType<SoundManager>().Play("CabbageRecolte");
                             Destroy(selectionRenderer.gameObject);
+                            
                             GameObject fruit1 = Instantiate(cabbage) as GameObject;
                             fruit1.transform.position = selectionRenderer.gameObject.transform.position + new Vector3(Random.Range(-0.4f, 0.4f), 1f, 0f);
 
@@ -96,6 +105,7 @@ public class SelectionManager : MonoBehaviour
 
                         else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "CabbageShoot" && InventoryUI.CabbageSeedCounter > 0) //Seme choux
                         {
+                            FindObjectOfType<SoundManager>().Play("Plant");
                             InventoryUI.CabbageSeedCounter--;
                             GameObject Plant = Instantiate(CabbagePlant) as GameObject;
                             Plant.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -113,6 +123,7 @@ public class SelectionManager : MonoBehaviour
 
                         else if (selectionRenderer.gameObject.transform.parent.gameObject.name == "TomatoShoot" && InventoryUI.TomatoSeedCounter > 0) //Seme plant de tomate
                         {
+                            FindObjectOfType<SoundManager>().Play("Plant");
                             InventoryUI.TomatoSeedCounter--;
                             GameObject Plant = Instantiate(TomatoPlant) as GameObject;
                             Plant.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
@@ -130,12 +141,14 @@ public class SelectionManager : MonoBehaviour
 
                         else if (selection.CompareTag("BuyTomato") && InventoryUI.Coins >= 1) //graine de tomate a acheter
                         {
+                            FindObjectOfType<SoundManager>().Play("Pay");
                             InventoryUI.TomatoSeedCounter++;
                             InventoryUI.Coins--;
                         }
 
                         else if (selection.CompareTag("BuyCabage") && InventoryUI.Coins >= 2) //graine de tomate a acheter
                         {
+                            FindObjectOfType<SoundManager>().Play("Pay");
                             InventoryUI.CabbageSeedCounter++;
                             InventoryUI.Coins -= 2;
                         }
@@ -145,6 +158,7 @@ public class SelectionManager : MonoBehaviour
                             Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
                             if (pushF)
                             {
+                                FindObjectOfType<SoundManager>().Play("WoodSound");
                                 RigidBox.isKinematic = true;
                                 selectionRenderer.gameObject.transform.SetParent(Cam.transform);
                                 selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);
@@ -166,6 +180,7 @@ public class SelectionManager : MonoBehaviour
                             Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
                             if (pushF)
                             {
+                                FindObjectOfType<SoundManager>().Play("WoodSound");
                                 RigidBox.isKinematic = true;
                                 selectionRenderer.gameObject.transform.SetParent(Cam.transform);
                                 selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);

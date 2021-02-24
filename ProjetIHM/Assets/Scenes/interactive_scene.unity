@@ -3624,7 +3624,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9fec2181dec19724c8dad5dc7a79cf54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4740,7 +4740,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9fec2181dec19724c8dad5dc7a79cf54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10709,6 +10709,98 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1182646782}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1187223218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187223221}
+  - component: {fileID: 1187223219}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1187223219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187223218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6678e085fe55ad44f9142aba1a9ba5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: EarnMoney
+    clip: {fileID: 8300000, guid: 441c67ead35e64d53880134d336bc5c8, type: 3}
+    volume: 0.591
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pay
+    clip: {fileID: 8300000, guid: 5dcc4fa4f5edf4f36af58e4a399e8741, type: 3}
+    volume: 0.598
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ambient
+    clip: {fileID: 8300000, guid: 8fbe700aa58582941ab77dc92bbe9ea8, type: 3}
+    volume: 0.576
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: CabbageRecolte
+    clip: {fileID: 8300000, guid: 8745ed305d52dc34cacf6afa9824c8e3, type: 3}
+    volume: 0.811
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TomatoRecolte
+    clip: {fileID: 8300000, guid: af1c50f1dbce0da4badfb7fa8c016f53, type: 3}
+    volume: 0.811
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Recup
+    clip: {fileID: 8300000, guid: c9c959067bfd4064ea021e62fb6b1445, type: 3}
+    volume: 0.811
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WoodSound
+    clip: {fileID: 8300000, guid: 710fac6668e892a4caffa76249557969, type: 3}
+    volume: 0.811
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Plant
+    clip: {fileID: 8300000, guid: 2a250cbd94d71164f8be3ce1265c33a3, type: 3}
+    volume: 0.811
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1187223221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187223218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1190091896
 GameObject:
   m_ObjectHideFlags: 0
