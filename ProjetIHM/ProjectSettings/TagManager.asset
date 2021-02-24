@@ -10,9 +10,6 @@ TagManager:
   - Door
   - BuyTomato
   - BuyCabage
-  - Sell
-  - HarvestedTomato
-  - HarvestedCabbage
   layers:
   - Default
   - TransparentFX
