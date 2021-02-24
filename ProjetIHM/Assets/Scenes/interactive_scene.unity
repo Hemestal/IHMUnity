@@ -10837,20 +10837,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: EarnMoney
-    clip: {fileID: 8300000, guid: 441c67ead35e64d53880134d336bc5c8, type: 3}
+    clip: {fileID: 8300000, guid: ee0f4a264050848c8a72778b3d471cb6, type: 3}
     volume: 0.591
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Pay
-    clip: {fileID: 8300000, guid: 5dcc4fa4f5edf4f36af58e4a399e8741, type: 3}
+    clip: {fileID: 8300000, guid: cdf748ccffe4548f9a9239250becbe6a, type: 3}
     volume: 0.598
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Ambient
     clip: {fileID: 8300000, guid: 8fbe700aa58582941ab77dc92bbe9ea8, type: 3}
-    volume: 0.576
+    volume: 0.096
     pitch: 1
     loop: 1
     source: {fileID: 0}

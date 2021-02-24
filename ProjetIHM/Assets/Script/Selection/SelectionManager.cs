@@ -37,7 +37,7 @@ public class SelectionManager : MonoBehaviour
             if (selection.CompareTag("Selectable") || selection.CompareTag("Tomato") || selection.CompareTag("Cabbage") || selection.CompareTag("BuyTomato") || selection.CompareTag("BuyCabage") || selection.CompareTag("Sell"))
             {
                 var selectionRenderer = selection.GetComponent<Renderer>();
-                if (selectionRenderer != null)
+                if (selectionRenderer != null & hit.distance < 3f)
                 {
                     //selectionRenderer.material.shader = Shader.Find("Self-Illumin/Outlined diffuse");
                     selectionRenderer.material.shader = Shader.Find("Ultimate 10+ Shaders/Force Field");
@@ -163,12 +163,14 @@ public class SelectionManager : MonoBehaviour
                                 selectionRenderer.gameObject.transform.SetParent(Cam.transform);
                                 selectionRenderer.gameObject.transform.localPosition = new Vector3(0, 0, 2);
                                 selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+                                Box1.transform.Find("Top").gameObject.SetActive(true);
                                 pushF = false;
                                 pushT = true;
                             }
 
                             else if (pushT)
                             {
+                                Box1.transform.Find("Top").gameObject.SetActive(false);
                                 selectionRenderer.gameObject.transform.SetParent(Box.transform);
                                 selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                                 RigidBox.isKinematic = false;
@@ -182,6 +184,7 @@ public class SelectionManager : MonoBehaviour
                             Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
                             if (pushF)
                             {
+                                Box2.transform.Find("Top").gameObject.SetActive(true);
                                 FindObjectOfType<SoundManager>().Play("WoodSound");
                                 RigidBox.isKinematic = true;
                                 selectionRenderer.gameObject.transform.SetParent(Cam.transform);
@@ -193,6 +196,7 @@ public class SelectionManager : MonoBehaviour
 
                             else if (pushT)
                             {
+                                Box2.transform.Find("Top").gameObject.SetActive(false);
                                 selectionRenderer.gameObject.transform.SetParent(Box.transform);
                                 selectionRenderer.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                                 RigidBox.isKinematic = false;
@@ -204,6 +208,7 @@ public class SelectionManager : MonoBehaviour
                         {
                             if (SellFruit.SellTomato == true)
                             {
+                                FindObjectOfType<SoundManager>().Play("EarnMoney");
                                 var NbTomato = GameObject.FindGameObjectsWithTag("HarvestedTomato");
                                 InventoryUI.Coins += NbTomato.Length;
                                 foreach (GameObject tomato in NbTomato)
@@ -215,6 +220,7 @@ public class SelectionManager : MonoBehaviour
                             }
                             if (SellFruit.SellCabbage == true)
                             {
+                                FindObjectOfType<SoundManager>().Play("EarnMoney");
                                 var NbCabbage = GameObject.FindGameObjectsWithTag("HarvestedCabbage");
                                 InventoryUI.Coins += NbCabbage.Length * 3;
                                 foreach (GameObject cabbage in NbCabbage)
