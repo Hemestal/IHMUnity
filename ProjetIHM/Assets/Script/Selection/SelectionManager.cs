@@ -8,16 +8,12 @@ public class SelectionManager : MonoBehaviour
     private Transform _selection;
     public GameObject tomato,cabbage, TomatoPlant, CabbagePlant, Box1, Box2;
     public TextMeshPro TomatoText, CabbageText;
-    private MoveCube moveBox1;
-    private MoveCube moveBox2;
     public static int TomatoCounter, CabbageCounter;
     private bool pushT = false, pushF = true;
     public GameObject Cam,Box;
     // Start is called before the first frame update
     void Start()
     {
-        moveBox1 = new MoveCube();
-        moveBox2 = new MoveCube();
         TomatoCounter = CabbageCounter = 0;
     }
 
@@ -144,16 +140,7 @@ public class SelectionManager : MonoBehaviour
                             InventoryUI.Coins -= 2;
                         }
 
-                        else if (selection.CompareTag("Selectable") && selection.gameObject.layer.Equals("Box1"))
-                        {
-                            moveBox1.PushCube(Box1);
-                        }
-
-                        else if (selection.CompareTag("Selectable") && selection.gameObject.layer.Equals("Box2"))
-                        {
-                            moveBox2.PushCube(Box2);
-                        }
-                        else if(selectionRenderer.gameObject.transform.gameObject.name== "Box_01")
+                        else if(selectionRenderer.gameObject.transform.gameObject.name == "Box_01")
                         {
                             Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
                             if (pushF)
@@ -173,6 +160,7 @@ public class SelectionManager : MonoBehaviour
                                 pushT = false;
                             }
                         }
+
                         else if (selectionRenderer.gameObject.transform.gameObject.name == "Box_02")
                         {
                             Rigidbody RigidBox = selectionRenderer.gameObject.transform.gameObject.GetComponent<Rigidbody>();
