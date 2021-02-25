@@ -239,7 +239,7 @@ public class SelectionManager : MonoBehaviour
                             }
                             else if (selection.CompareTag("BuyCar") && InventoryUI.Coins >= 10) //graine de tomate a acheter
                             {
-                                FindObjectOfType<SoundManager>().Play("Pay");
+                                FindObjectOfType<SoundManager>().Play("Easter Egg");
                                 car.SetActive(true);
                                 InventoryUI.Coins -= 10;
                                 buyCar.SetActive(false);

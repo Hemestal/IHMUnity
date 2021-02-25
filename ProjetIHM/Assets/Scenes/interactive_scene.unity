@@ -11532,6 +11532,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Easter Egg
+    clip: {fileID: 8300000, guid: 54c67aad9a3c7e94085868edcc6bc0de, type: 3}
+    volume: 0.706
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1187223221
 Transform:
   m_ObjectHideFlags: 0
