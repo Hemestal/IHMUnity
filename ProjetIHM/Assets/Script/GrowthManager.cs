@@ -20,7 +20,7 @@ public class GrowthManager : MonoBehaviour
             time = 0;
             if (transform.name.StartsWith("Cabbage") && transform.localScale.x < 1.0f)
             {
-                transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+                transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
                 if(transform.localScale.x >= 1.0f)
                 {
                     gameObject.tag = "Selectable";
