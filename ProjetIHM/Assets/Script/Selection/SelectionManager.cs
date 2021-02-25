@@ -259,7 +259,7 @@ public class SelectionManager : MonoBehaviour
             carF = true;
             carT = false;
             player.SetActive(true);
-            player.transform.position=new Vector3(car.transform.position.x+3, car.transform.position.y, car.transform.position.z);
+            player.transform.position=new Vector3(car.transform.position.x+3, car.transform.position.y+2, car.transform.position.z);
         }
     }
 }
